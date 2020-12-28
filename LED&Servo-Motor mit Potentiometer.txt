@@ -1,0 +1,54 @@
+#include <Servo.h> 
+Servo myservo; 
+int pot;
+int value_pot; 
+int value_LED; 
+void setup() 
+{ 
+  pinMode (A3, INPUT); 
+  pinMode (8, OUTPUT); 
+  pinMode (2, OUTPUT); 
+  pinMode (7, OUTPUT);  
+  pinMode (12, OUTPUT);
+  myservo.attach(4);
+} 
+void loop() 
+{ 
+  value_pot = analogRead (A3);  
+  pot = map (value_pot, 0, 1023, 0, 180); 
+  myservo.write (pot); 
+  delay (15);
+  value_LED = map (value_pot, 0, 1023, 0, 4); 
+  if (value_LED > 0) 
+  { 
+    digitalWrite (8, HIGH); 
+  } 
+  else 
+  { 
+    digitalWrite (8, LOW); 
+  } 
+  if (value_LED > 1) 
+  { digitalWrite (12, HIGH); 
+  } 
+  else 
+  { 
+    digitalWrite (12, LOW); 
+  } 
+  if (value_LED > 2) 
+  { 
+    digitalWrite (2, HIGH); 
+  } 
+  else 
+  { 
+    digitalWrite (2, LOW);
+  } 
+  if (value_LED > 3) 
+  { 
+    digitalWrite (7, HIGH); 
+  } 
+  else 
+  { 
+    digitalWrite (7, LOW); 
+  } 
+  
+} 
